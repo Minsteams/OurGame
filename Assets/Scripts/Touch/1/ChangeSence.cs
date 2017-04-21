@@ -12,6 +12,7 @@ public class ChangeSence : MonoBehaviour {
     public string newBGM;
     public float delay;
     public bool loop=true;
+    public int effectIndex=-1;
 	// Use this for initialization
 	void Start () {
 		touch = GetComponent<Touch> ();
@@ -20,7 +21,7 @@ public class ChangeSence : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(touch.isTouched==true){
-            SceneChanger.Change(sceneToUnLoad, sceneToLoad, sub, delaytime,newBGM,delay,loop);
+            SceneChanger.Change(sceneToUnLoad, sceneToLoad, sub, delaytime,newBGM,delay,loop,effectIndex);
 		}
 	}
 }

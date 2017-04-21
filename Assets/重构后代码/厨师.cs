@@ -28,9 +28,10 @@ public class 厨师 : NPC
                 {
                     npc.ChangeState(new ItemState22());
                 }
-                else if (item == "金币")
+                else if (厨师.counter>=3&&item == "金币")
                 {
-                    npc.ChangeState(new ItemState32());
+                    ItemSystem.DeleteItem("金币");
+                    ++厨师.counter;
                 }
                 else switch (厨师.counter)
                     {
@@ -162,25 +163,6 @@ public class 厨师 : NPC
 			if (LogSystem.IfSpeakEnded ()) {
 				npc.ChangeState (new StandState ());
 			}
-		}
-	}
-	class ItemState32 : NPCState
-	{
-		public override void Enter(NPC npc)
-		{
-			ItemSystem.DeleteItem ("金币");
-			++厨师.counter;
-		}
-
-		public override void Execute(NPC npc)
-		{
-			npc.ChangeState (new TalkState41());
-
-		}
-
-		public override void Exit(NPC npc)
-		{
-
 		}
 	}
 	class TalkState41 : NPCState

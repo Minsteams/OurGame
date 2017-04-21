@@ -33,7 +33,8 @@ public class AnimaStrangeRoom : MonoBehaviour {
         Vector3 v = t.position;
         v.x = 7;
         t.position = v;
-        SceneChanger.Change("C1S4", "C1S5", "突然我从床上惊醒，天已经亮了。", 3f,"BGM5",1.5f);
-		yield return null;
+        SceneChanger.Change("C1S4", "C1S5", "突然我从床上惊醒，天已经亮了。", 3f,"BGM5",1.5f,true,5);
+        厨师.counter = 7;
+        yield return null;
 	}
 }

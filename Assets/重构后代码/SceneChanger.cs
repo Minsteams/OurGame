@@ -11,10 +11,11 @@ public class SceneChanger : MonoBehaviour {
     static bool isChanging = false;
     public GameObject black;
 
-    static public void Change(string tounload, string toload,string sub = "",float delaytime= 0.4f,string bgm="",float delay=0,bool loop=true)
+    static public void Change(string tounload, string toload,string sub = "",float delaytime= 0.4f,string bgm="",float delay=0,bool loop=true,int effectIndex=-1)
     {
         if (!isChanging)
         {
+            if (effectIndex != -1) CameraEffectChange.ChangeEffect(effectIndex);
             if (bgm != "")AudioSystem.ChangeBGM(bgm, delay+2f,loop);
             toUnload = tounload;
             toLoad = toload;
@@ -33,7 +34,6 @@ public class SceneChanger : MonoBehaviour {
     IEnumerator ch()
     {
         Vector3 temp = Player.current.GetComponentInParent<Leg>().transform.position;
-        black.transform.position = (Vector2)Camera.main.transform.position;
         Fade.FadeIn(black);
         yield return new WaitForSeconds(0.5f);
         SceneManager.UnloadSceneAsync(toUnload);

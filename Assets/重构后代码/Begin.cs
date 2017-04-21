@@ -43,6 +43,7 @@ public class Begin : MonoBehaviour {
 
     IEnumerator begin()
     {
+        CameraEffectChange.ChangeEffect(0);
         GameObject.FindGameObjectWithTag("button").GetComponent<SpriteRenderer>().enabled = false;
         Fade.Hide(logo);
         yield return new WaitForSeconds(1f);
@@ -56,6 +57,7 @@ public class Begin : MonoBehaviour {
 
 
         AudioSystem.ChangeBGM("BGM0",0,false);
+        CameraEffectChange.ChangeEffect(1);
         float t = 2.725f;
         yield return Words1();//第一句话
         yield return new WaitForSeconds(9.24f);
