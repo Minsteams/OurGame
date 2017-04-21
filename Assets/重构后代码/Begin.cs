@@ -36,13 +36,14 @@ public class Begin : MonoBehaviour {
             标题.isStart = true;
             SceneManager.LoadScene("标题界面", LoadSceneMode.Additive);
             AudioSystem.current.BGMSource.Stop();
-            AudioSystem.ChangeBGM("BGM1", 7);
+            AudioSystem.ChangeBGM("BGM1", 1);
             SceneManager.UnloadSceneAsync("片头");
         }
 	}
 
     IEnumerator begin()
     {
+        GameObject.FindGameObjectWithTag("button").GetComponent<SpriteRenderer>().enabled = false;
         Fade.Hide(logo);
         yield return new WaitForSeconds(1f);
         Fade.FadeIn(logo, 1f);
@@ -111,7 +112,7 @@ public class Begin : MonoBehaviour {
         yield return Words3();
         yield return new WaitForSeconds(3);
         yield return Words4();
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(7);
         标题.isStart = true;
         SceneManager.LoadScene("标题界面", LoadSceneMode.Additive);
         AudioSystem.ChangeBGM("BGM1",7);

@@ -26,6 +26,7 @@ public class AudioSystem : MonoBehaviour {
 	}
     static public void ChangeBGM(string bgmName,float delay=0,bool ifloop=true)
     {
+        if (bgmName != null)
         current.StartCoroutine(current.delayAndChangeBGM(current.StringToAudio(bgmName),delay, ifloop));
     }
     public void Play(string s)

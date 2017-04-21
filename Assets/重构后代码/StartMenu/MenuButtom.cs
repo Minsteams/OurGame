@@ -9,6 +9,5 @@ public class MenuButtom : MonoBehaviour {
     {
         CrossInCGSystem.isStart = false;
         SceneManager.LoadScene("菜单界面", LoadSceneMode.Additive);
-        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().localPosition = new Vector3(-157, 168, 0);
     }
 }

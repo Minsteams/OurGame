@@ -11,10 +11,11 @@ public class SceneChanger : MonoBehaviour {
     static bool isChanging = false;
     public GameObject black;
 
-    static public void Change(string tounload, string toload,string sub = "",float delaytime= 0.4f)
+    static public void Change(string tounload, string toload,string sub = "",float delaytime= 0.4f,string bgm="",float delay=0,bool loop=true)
     {
         if (!isChanging)
         {
+            if (bgm != "")AudioSystem.ChangeBGM(bgm, delay+2f,loop);
             toUnload = tounload;
             toLoad = toload;
             Sub = sub;

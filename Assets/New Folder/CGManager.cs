@@ -11,7 +11,7 @@ public class CGManager : MonoBehaviour {
         isLock = new bool[6];
         for(int i = 0; i < 6; i++)
         {
-      //      isLock[i] = true;
+            isLock[i] = true;
         }
     }
     static public void Unlock(int i)

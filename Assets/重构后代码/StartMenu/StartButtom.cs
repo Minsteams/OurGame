@@ -19,9 +19,9 @@ public class StartButtom : MonoBehaviour {
 
     private void OnMouseDown()
     {
+        GameObject.FindGameObjectWithTag("button").GetComponent<SpriteRenderer>().enabled = true;
         MyCamera.isFixing = true;
-        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(-100, -100, 0);
         SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
-        SceneChanger.Change("标题界面", "C1S1", "我不知道发生了什么", 3.5f);
+        SceneChanger.Change("标题界面", "C1S1", "我不知道发生了什么", 3.5f,"BGM2",1);
     }
 }

@@ -18,9 +18,5 @@ public class CrossInCGSystem : MonoBehaviour {
     private void OnMouseDown()
     {
         SceneManager.UnloadSceneAsync("CG");
-        if (!isStart)
-        {
-            GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().localPosition = new Vector3(-157, 168, 0);
-        }
     }
 }

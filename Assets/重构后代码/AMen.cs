@@ -17,7 +17,7 @@ public class AMen : Machine {
             if (machine.IfInteracted())
             {
                 SceneManager.UnloadSceneAsync("C1S2");
-                SceneChanger.Change("C1S3", "C1S4", "打开门后，一切都变了。", 4);
+                SceneChanger.Change("C1S3", "C1S4", "打开门后，一切都变了。", 4,"BGM4",0,false);
             }
         }
     }

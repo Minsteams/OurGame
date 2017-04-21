@@ -10,7 +10,8 @@ public class AjustMusic : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        music[0] = AudioSystem.current.GetComponent<AudioSource>();
+        music[1] = AudioSystem.current.BGMSource;
 	}
 	
 	// Update is called once per frame
