@@ -8,7 +8,6 @@ public class CG : MonoBehaviour {
     public GameObject bigPicture;
     public GameObject black;
     SpriteRenderer r;
-    public CGManager manager;
     public GameObject text1;
     public GameObject text2;
 
@@ -19,7 +18,7 @@ public class CG : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!manager.isLock[ID])
+        if (!CGManager.isLock[ID])
         {
             text1.SetActive(false);
             text2.SetActive(true);
@@ -28,7 +27,7 @@ public class CG : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        if (!manager.isLock[ID])
+        if (!CGManager.isLock[ID])
         {
             black.SetActive(true);
             bigPicture.SetActive(true);

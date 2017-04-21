@@ -6,11 +6,6 @@ public class Floating : MonoBehaviour {
 	public float y = 0.01f;
 	public float bound1 = 0.25f;
 	public float bound2 = -0.25f;
-
-	// Use this for initialization
-	void Start () {
-		Debug.Log (transform.position.y);
-	}
 	
 	// Update is called once per frame
 	void Update () {

@@ -44,7 +44,7 @@ public class Begin : MonoBehaviour {
     IEnumerator begin()
     {
         Fade.Hide(logo);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         Fade.FadeIn(logo, 1f);
         yield return new WaitForSeconds(4f);
         Fade.Disappear(background, 3);

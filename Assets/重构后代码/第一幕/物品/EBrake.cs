@@ -35,10 +35,10 @@ public class EBrake : Machine {
 			if (EBrake.counter == 2&&EBrake.brakeIsOn==true) {
 				machine.ChangeState (new PowerState());
 			}
-			if (EBrake.counter == 3&&EBrake.brakeIsOn==true) {
+			if (EBrake.counter == 3&& EBrake.brakeIsOn == true) {
 				machine.ChangeState (new FinishState());
 			}
-			if (EBrake.counter == 4&&machine.IfInteracted ()) {
+			if (EBrake.counter == 4&& EBrake.brakeIsOn == true) {
 				machine.ChangeState (new Finish1State());
 			}
 		}
