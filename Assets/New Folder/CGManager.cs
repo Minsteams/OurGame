@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class CGManager : MonoBehaviour {
 
-    static public bool[] isLock;
+    static public bool[] isNotLock = new bool[6];
 
-    private void Awake()
-    {
-        isLock = new bool[6];
-        for(int i = 0; i < 6; i++)
-        {
-            isLock[i] = true;
-        }
-    }
     static public void Unlock(int i)
     {
-        isLock[i]= false;
+        isNotLock[i]= true;
         SubtitleSystem.ShowSubtitle("新CG解锁");
     }
 }

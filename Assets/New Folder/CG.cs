@@ -18,7 +18,7 @@ public class CG : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (!CGManager.isLock[ID])
+        if (CGManager.isNotLock[ID])
         {
             text1.SetActive(false);
             text2.SetActive(true);
@@ -27,7 +27,7 @@ public class CG : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        if (!CGManager.isLock[ID])
+        if (CGManager.isNotLock[ID])
         {
             black.SetActive(true);
             bigPicture.SetActive(true);

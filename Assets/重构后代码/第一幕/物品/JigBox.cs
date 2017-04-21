@@ -2,29 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JigBox : Machine {
+public class JigBox : MonoBehaviour {
 
-	void Start () {
-		currentState = new InitState ();
-	}
-
-	class InitState:MachineState
-	{ 
-		public override void Enter(Machine machine){ 
-
-		} 
-
-		public override void Execute(Machine machine){ 
-			if (machine.IfInteracted ()&&ItemSystem.GetCurrentItem()=="电闸零件") {
+		public void OnMouseOver(){ 
+			if ((Input.GetMouseButtonDown(1)||Input.GetMouseButtonDown(0))&&ItemSystem.GetCurrentItem()=="电闸零件") {
 				EBrake.brakeIsOn = false;
                 EBrake.isNotOver = true;
 				++EBrake.counter;
 			}
-
 		}
-
-		public override void Exit(Machine machine){ 
-
-		} 
-	} 
 }

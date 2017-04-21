@@ -225,7 +225,7 @@ public class 厨师 : NPC
 		public override void Enter(NPC npc)
 		{
             ItemSystem.AddItem("小钥匙");
-			LogSystem.Speak ("你赢啦，门已经打开了。", npc);
+			LogSystem.Speak ("你下不赢我的，钥匙给你好惹。", npc);
             ++厨师.counter;
         }
 
@@ -245,7 +245,7 @@ public class 厨师 : NPC
 	{
 		public override void Enter(NPC npc)
 		{
-            LogSystem.Speak("你还挺厉害的。", npc);
+            LogSystem.Speak("你好呀~", Player.current);
         }
 
 		public override void Execute(NPC npc)

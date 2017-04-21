@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AMen : Machine {
-
+    static public bool isopen = false;
 	// Use this for initialization
 	void Start () {
         currentState = new basicState();
@@ -16,8 +16,15 @@ public class AMen : Machine {
         {
             if (machine.IfInteracted())
             {
-                SceneManager.UnloadSceneAsync("C1S2");
-                SceneChanger.Change("C1S3", "C1S4", "打开门后，一切都变了。", 4,"BGM4",0,false);
+                if (isopen)
+                {
+                    SceneManager.UnloadSceneAsync("C1S2");
+                    SceneChanger.Change("C1S3", "C1S4", "打开门后，一切都变了。", 4, "BGM4", 0, false);
+                }
+                else
+                {
+                    SubtitleSystem.ShowSubtitle("踹也踹不开，伐开心。");
+                }
             }
         }
     }

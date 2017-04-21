@@ -116,6 +116,7 @@ public class EBrake : Machine {
 			machine.GetComponent<EBrake> ().finish1.SetActive (true);
 			GameSystem.IStarted ();
 			SubtitleSystem.ShowSubtitle ("门的电力恢复了");
+            AMen.isopen = true;
 		}
 
 		public override void Execute(Machine machine){

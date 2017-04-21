@@ -8,9 +8,10 @@ public class Touch : MonoBehaviour {
 	void Start () {
 		
 	}
-	void OnTriggerStay2D(){
-		isTouched = true;
-	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isTouched = true;
+    }
 	void OnTriggerExit2D(Collider2D collider){
 		isTouched = false;
 	}
