@@ -21,6 +21,7 @@ public class BatteryBox : Machine {
 			if (machine.IfInteracted ()&&ItemSystem.GetCurrentItem()=="电池") {
 				ItemSystem.DeleteItem ("电池");
 				EBrake.brakeIsOn = false;
+                EBrake.isNotOver = true;
 				++EBrake.counter;
 			}
 			

@@ -17,6 +17,6 @@ public class CrossInMenu : MonoBehaviour {
     {
         CrossInCGSystem.isStart = true;
         SceneManager.UnloadSceneAsync("菜单界面");
-        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(0, 0, 0);
+        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(-100, 0, 0);
     }
 }

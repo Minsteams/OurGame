@@ -6,6 +6,7 @@ public class EBrake : Machine {
 	
 	public static int counter=1;
 	public static bool brakeIsOn=false;
+    public static bool isNotOver = false;
 
 	public GameObject unpower;
 	public GameObject power;
@@ -20,7 +21,7 @@ public class EBrake : Machine {
 	class InitState:MachineState
 	{
 		public override void Enter(Machine machine){
-
+            if (isNotOver) { isNotOver = false; brakeIsOn = true; }
 		}
 
 		public override void Execute (Machine machine)
@@ -77,8 +78,8 @@ public class EBrake : Machine {
 		public override void Execute(Machine machine){
 			if (machine.GetComponent<EBrake> ().jig.Win ()) {
 				++EBrake.counter;
-				EBrake.brakeIsOn = false;
-			}
+                machine.ChangeState(new InitState());
+            }
 			if (EBrake.brakeIsOn == false) {
 				machine.ChangeState (new InitState());
 			}

@@ -20,7 +20,7 @@ public class CrossInCGSystem : MonoBehaviour {
         SceneManager.UnloadSceneAsync("CG");
         if (!isStart)
         {
-            GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(250, 330, 0);
+            GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().localPosition = new Vector3(-157, 168, 0);
         }
     }
 }

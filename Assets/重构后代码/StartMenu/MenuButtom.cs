@@ -23,6 +23,6 @@ public class MenuButtom : MonoBehaviour {
     {
         CrossInCGSystem.isStart = false;
         SceneManager.LoadScene("菜单界面", LoadSceneMode.Additive);
-        music.position = new Vector3(250, 330, 0);
+        music.localPosition = new Vector3(-157, 168, 0);
     }
 }

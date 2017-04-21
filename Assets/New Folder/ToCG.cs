@@ -18,6 +18,6 @@ public class ToCG : MonoBehaviour {
     private void OnMouseDown()
     {
         SceneManager.LoadScene("CG", LoadSceneMode.Additive);
-        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(0, 0, 0);
+        GameObject.FindGameObjectWithTag("music").GetComponent<RectTransform>().position = new Vector3(-100, 0, 0);
     }
 }

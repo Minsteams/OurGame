@@ -17,6 +17,7 @@ public class JigBox : Machine {
 		public override void Execute(Machine machine){ 
 			if (machine.IfInteracted ()&&ItemSystem.GetCurrentItem()=="电闸零件") {
 				EBrake.brakeIsOn = false;
+                EBrake.isNotOver = true;
 				++EBrake.counter;
 			}
 
