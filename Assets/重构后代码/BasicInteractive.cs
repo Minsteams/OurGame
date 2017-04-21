@@ -27,16 +27,26 @@ public class BasicInteractive : MonoBehaviour {
             isInterActing = false;
         }
     }
+    private void OnMouseEnter()
+    {
+        AudioSystem.current.Play("交互前");
+        if (GetComponent<Mouth>() != null) MouseIcon.Change(3);
+        else MouseIcon.Change(2);
+    }
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonUp(1)&&GameSystem.isMoving)
         {
+            MouseIcon.Change(1);
             x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
             Player.leg.MoveTo(x);
             isInterActing = true;
         }
     }
-
+    private void OnMouseExit()
+    {
+        MouseIcon.Change(1);
+    }
     public bool isActed()
     {
         bool t=acted;

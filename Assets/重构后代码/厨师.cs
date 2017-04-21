@@ -26,7 +26,9 @@ public class 厨师 : NPC
                 string item = ItemSystem.GetCurrentItem();
                 if ( item == "棋盘")
                 {
-                    npc.ChangeState(new ItemState22());
+                    ItemSystem.DeleteItem("棋盘");
+                    npc.ChangeState(new TalkState30());
+                    counter = 3;
                 }
                 else if (厨师.counter>=3&&item == "金币")
                 {
@@ -55,17 +57,14 @@ public class 厨师 : NPC
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("你好呀，来和我下棋吧。",npc);
-		}
+			LogSystem.Speak ("你好呀！",Player.current);
+            ++厨师.counter;
+        }
 		public override void Execute (NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
 				npc.ChangeState (new TalkState12());
 			}
-		}
-		public override void Exit (NPC npc)
-		{
-			
 		}
 	}
 
@@ -73,7 +72,7 @@ public class 厨师 : NPC
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("你问我为什么？",npc);
+			LogSystem.Speak ("你好，小姑娘。有什么事吗。",npc);
 		}
 		public override void Execute (NPC npc)
 		{
@@ -81,17 +80,13 @@ public class 厨师 : NPC
 				npc.ChangeState (new TalkState13());
 			}
 		}
-		public override void Exit (NPC npc)
-		{
-
-		}
 	}
 
 	class TalkState13 :NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("因为如果你赢不了我，前面的门就不会开。",npc);
+			LogSystem.Speak ("厨师先生，能帮我把前面那扇门打开吗？", Player.current);
 		}
 		public override void Execute (NPC npc)
 		{
@@ -99,86 +94,203 @@ public class 厨师 : NPC
 				npc.ChangeState (new TalkState14());
 			}
 		}
-		public override void Exit (NPC npc)
-		{
-
-		}
 	}
 	class TalkState14 :NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("明白了就好，快准备棋盘吧，我這有棋子了。", npc);
-			++厨师.counter;
+			LogSystem.Speak ("哦~是想让我帮你开门啊。", npc);
+			
 		}
 		public override void Execute (NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
-				npc.ChangeState (new StandState());
+				npc.ChangeState (new TalkState15());
 			}
 		}
 	}
+    class TalkState15 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("这样吧，你陪我下几盘井字棋，你赢了我就给你开门。", npc);
 
+        }
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState16());
+            }
+        }
+    }
+    class TalkState16 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("不过我只有棋子，没有棋盘，你帮我想办法找一张棋盘来吧。", npc);
 
-	class TalkState21 : NPCState
+        }
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState17());
+            }
+        }
+    }
+    class TalkState17 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("好吧。。",Player.current);
+
+        }
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState18());
+            }
+        }
+    }
+    class TalkState18 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("看到有用的道具，用鼠标右键点击就能捡起来哦。右下角就是道具栏按钮了。", npc);
+
+        }
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState19());
+            }
+        }
+    }
+    class TalkState19 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("在道具栏中按右键可以使用道具，分别按左键和右键可以组合两个道具。好好使用这个功能吧。", npc);
+
+        }
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new StandState());
+            }
+        }
+    }
+    class TalkState21 : NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("如果你找到了棋盘就带给我吧。", npc);
+			LogSystem.Speak ("找到棋盘了吗？找到了就给我吧。", npc);
 
 		}
 
 		public override void Execute(NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
-				npc.ChangeState (new StandState ());
+				npc.ChangeState (new TalkState18 ());
 			}
 		}
 	}
+    class TalkState30 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("自己画的棋盘啊。也凑合吧。不过。。", npc);
 
-	class ItemState22 : NPCState
+        }
+
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState31());
+            }
+        }
+    }
+    class TalkState31 : NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-			ItemSystem.DeleteItem ("棋盘");
-			++厨师.counter;
-
-		}
-
-		public override void Execute(NPC npc)
-		{
-			npc.ChangeState (new TalkState31());
-		}
-	}
-	class TalkState31 : NPCState
-	{
-		public override void Enter(NPC npc)
-		{
-			LogSystem.Speak ("棋盘有了，但我还要金币。", npc);
+			LogSystem.Speak ("年轻人啊，下棋没有金币怎么行呢？", npc);
 
 		}
 
 		public override void Execute(NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
-				npc.ChangeState (new StandState ());
+				npc.ChangeState (new TalkState32());
 			}
 		}
 	}
-	class TalkState41 : NPCState
+    class TalkState32 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("怎么不行。。。T T", Player.current);
+
+        }
+
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new TalkState33());
+            }
+        }
+    }
+    class TalkState33 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("当然不行。", npc);
+
+        }
+
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new StandState());
+            }
+        }
+    }
+    class TalkState41 : NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("我们开始下棋吧。", npc);
+			LogSystem.Speak ("给你金币，现在可以开始下了吧~", Player.current);
         }
 
 		public override void Execute(NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
-				npc.ChangeState (new PlayState ());
+				npc.ChangeState (new TalkState42());
 			}
 		}
 	}
+    class TalkState42 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+            LogSystem.Speak("好，我们来下棋吧~", npc);
+        }
+
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new PlayState());
+            }
+        }
+    }
     class PlayState : NPCState
     {
         public override void Enter(NPC npc)
@@ -206,28 +318,40 @@ public class 厨师 : NPC
 	{
 		public override void Enter(NPC npc)
 		{
-            ItemSystem.AddItem("小钥匙");
-			LogSystem.Speak ("你下不赢我的，钥匙给你好惹。", npc);
+          
+			LogSystem.Speak ("算了算了，反正你也赢不了我，钥匙给你，你自己过去吧。", npc);
             ++厨师.counter;
         }
 
 		public override void Execute(NPC npc)
 		{
 			if (LogSystem.IfSpeakEnded ()) {
-				npc.ChangeState (new StandState ());
-			}
-		}
-
-		public override void Exit(NPC npc)
-		{
-
+				npc.ChangeState (new TalkState52());
+            }
 		}
 	}
-	class TalkState61 : NPCState
+    class TalkState52 : NPCState
+    {
+        public override void Enter(NPC npc)
+        {
+
+            LogSystem.Speak("哇~，谢谢厨师先生~",Player.current);
+        }
+
+        public override void Execute(NPC npc)
+        {
+            if (LogSystem.IfSpeakEnded())
+            {
+                npc.ChangeState(new StandState());
+                ItemSystem.AddItem("小钥匙");
+            }
+        }
+    }
+    class TalkState61 : NPCState
 	{
 		public override void Enter(NPC npc)
 		{
-            LogSystem.Speak("你好呀~", Player.current);
+            LogSystem.Speak("你好呀~厨师先生~", Player.current);
         }
 
 		public override void Execute(NPC npc)
@@ -246,7 +370,7 @@ public class 厨师 : NPC
 	{
 		public override void Enter(NPC npc)
 		{
-			LogSystem.Speak ("你好啊，今天天气不错。", npc);
+			LogSystem.Speak ("你好啊。", npc);
 		}
 
 		public override void Execute(NPC npc)
@@ -256,9 +380,5 @@ public class 厨师 : NPC
 			}
 		}
 
-		public override void Exit(NPC npc)
-		{
-
-		}
 	}
 }

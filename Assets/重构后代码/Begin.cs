@@ -19,6 +19,7 @@ public class Begin : MonoBehaviour {
     public GameObject titleScene6;
     public GameObject titleScene7;
     public float speed;
+    static public bool pass = false;
     Transform trans;
     // Use this for initialization
     void Start () {
@@ -30,19 +31,24 @@ public class Begin : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(trans!=null)trans.position += new Vector3(-speed, 0, 0);
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)||pass)
         {
+            CameraEffectChange.ChangeEffect(1);
+            Begin.pass = false;
             StopAllCoroutines();
             标题.isStart = true;
             SceneManager.LoadScene("标题界面", LoadSceneMode.Additive);
             AudioSystem.current.BGMSource.Stop();
             AudioSystem.ChangeBGM("BGM1", 1);
             SceneManager.UnloadSceneAsync("片头");
+            MouseIcon.Change(1);
         }
 	}
 
     IEnumerator begin()
     {
+        Cursor.visible = false;
+        MouseIcon.Change(0);
         CameraEffectChange.ChangeEffect(0);
         GameObject.FindGameObjectWithTag("button").GetComponent<SpriteRenderer>().enabled = false;
         Fade.Hide(logo);
@@ -119,6 +125,7 @@ public class Begin : MonoBehaviour {
         SceneManager.LoadScene("标题界面", LoadSceneMode.Additive);
         AudioSystem.ChangeBGM("BGM1",7);
         SceneManager.UnloadSceneAsync("片头");
+        MouseIcon.Change(1);
     }
 
     public IEnumerator Words1()

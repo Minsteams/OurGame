@@ -18,6 +18,7 @@ public class BackToStart : MonoBehaviour {
     private void OnMouseDown()
     {
         AudioSystem.ChangeBGM("BGM1");
+        Begin.pass = true;
         SceneManager.LoadScene("MainScene");
     }
 }

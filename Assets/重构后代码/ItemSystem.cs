@@ -111,6 +111,7 @@ public class ItemSystem : MonoBehaviour {
 
     public static void AddItem(string itemName)//添加道具
     {
+        AudioSystem.current.Play("交互");
         ItemInBlank iib = NameToItem(itemName);
         SubtitleSystem.ShowSubtitle(iib.introductionWhenAdded);
         ItemList.Add(iib);
